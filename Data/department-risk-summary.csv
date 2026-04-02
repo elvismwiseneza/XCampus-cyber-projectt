@@ -1,0 +1,8 @@
+department,monitored_systems,avg_risk_score,highest_risk_level,systems_flagged_high,top_driver,mean_ml_probability,date
+Finance,2,60.54,High,1,Suspicious IP access,0.6423,2026-03-31
+Library,2,58.78,High,1,Unusual downloads,0.6362,2026-03-31
+Human Resources,2,57.55,Medium,0,Login failures,0.6914,2026-03-31
+Student Services,2,53.87,High,1,Login failures,0.58,2026-03-31
+Research Lab,2,52.64,High,1,Login failures,0.5478,2026-03-31
+Registrar,2,39.76,Medium,0,Login failures,0.4509,2026-03-31
+Admissions,2,28.7,Low,0,Login failures,0.2813,2026-03-31
