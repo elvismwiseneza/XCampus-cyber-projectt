@@ -24,7 +24,7 @@ def main() -> None:
     st.set_page_config(page_title="Campus Cyber Risk Monitor", layout="wide")
     st.title("AI Powered Campus Cybersecurity Risk Monitor")
     st.caption(
-        "Predictive monitoring for higher-education networks using synthetic event logs, machine learning, "
+        "Predictive monitoring for higher education networks using synthetic event logs, machine learning, "
         "anomaly detection, and interpretable risk scoring."
     )
 
@@ -53,7 +53,7 @@ def main() -> None:
         benchmark_df = pd.DataFrame(
             [
                 {"Approach": "Predictive ML", **metrics["ml_model"]},
-                {"Approach": "Rule-based baseline", **metrics["rule_based_baseline"]},
+                {"Approach": "Rule based baseline", **metrics["rule_based_baseline"]},
                 {"Approach": "Anomaly detector", **metrics["anomaly_detector"]},
             ]
         )
@@ -62,9 +62,9 @@ def main() -> None:
     with question_col:
         st.subheader("Research Framing")
         st.markdown(
-            "- Can behavioral telemetry predict future compromise windows?\n"
-            "- Which network signals contribute most to elevated risk?\n"
-            "- How does anomaly detection compare with rule-based monitoring?"
+            "- Can tracking how a user normally acts help us guess when they might get hacked?\n"
+            "- Which specific internet or computer activities are the biggest warning signs of danger?\n"
+            "- What is the difference between spotting weird behavior versus just looking for broken rules?"
         )
         feature_df = pd.DataFrame(metrics["top_features"])
         st.bar_chart(feature_df.set_index("feature"))
@@ -115,7 +115,7 @@ def main() -> None:
         "suspicious_ip_accesses",
         "unusual_file_downloads",
         "new_device_connections",
-        "phishing_email_signals",
+        "phishing email signals",
         "privileged_access_attempts",
     ]
     signal_df = (
