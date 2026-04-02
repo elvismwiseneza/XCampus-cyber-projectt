@@ -115,7 +115,7 @@ def main() -> None:
         "suspicious_ip_accesses",
         "unusual_file_downloads",
         "new_device_connections",
-        "phishing email signals",
+        "phishing_email_signals",
         "privileged_access_attempts",
     ]
     signal_df = (
