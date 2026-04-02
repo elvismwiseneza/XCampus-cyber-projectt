@@ -24,8 +24,7 @@ def main() -> None:
     st.set_page_config(page_title="Campus Cyber Risk Monitor", layout="wide")
     st.title("AI Powered Campus Cybersecurity Risk Monitor")
     st.caption(
-        "Predictive monitoring for higher education networks using synthetic event logs, machine learning, "
-        "anomaly detection, and interpretable risk scoring."
+        "A Smarter way to track and understand network safety for schools."
     )
 
     if not (DATA_DIR / "department-risk-summary.csv").exists():
@@ -49,7 +48,7 @@ def main() -> None:
 
     benchmark_col, question_col = st.columns([1.1, 1.3])
     with benchmark_col:
-        st.subheader("Model Benchmarks")
+        st.subheader("Oerformance/results")
         benchmark_df = pd.DataFrame(
             [
                 {"Approach": "Predictive ML", **metrics["ml_model"]},
@@ -60,7 +59,7 @@ def main() -> None:
         st.dataframe(benchmark_df, use_container_width=True, hide_index=True)
 
     with question_col:
-        st.subheader("Research Framing")
+        st.subheader("The plan/goal")
         st.markdown(
             "- Can tracking how a user normally acts help us guess when they might get hacked?\n"
             "- Which specific internet or computer activities are the biggest warning signs of danger?\n"
