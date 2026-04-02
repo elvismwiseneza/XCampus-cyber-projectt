@@ -24,7 +24,7 @@ def main() -> None:
     st.set_page_config(page_title="Campus Cyber Risk Monitor", layout="wide")
     st.title("AI Powered Campus Cybersecurity Risk Monitor")
     st.caption(
-        "Predictive monitoring for higher education networks using synthetic event logs, machine learning, "
+        "Predictive monitoring for higher-education networks using synthetic event logs, machine learning, "
         "anomaly detection, and interpretable risk scoring."
     )
 
@@ -36,25 +36,25 @@ def main() -> None:
     available_departments = ["All departments"] + sorted(department_summary["department"].unique().tolist())
     selected_department = st.sidebar.selectbox("Department view", available_departments)
 
-    latest_date = pd.to_datetime(metrics["latest snapshot date"])
-    high_risk_departments = int(metrics["high risk departments latest"])
-    high_risk_systems = int(metrics["high risk systems latest"])
-    avg_risk_score = round(float(department_summary["avg risk score"].mean()), 2)
+    latest_date = pd.to_datetime(metrics["latest_snapshot_date"])
+    high_risk_departments = int(metrics["high_risk_departments_latest"])
+    high_risk_systems = int(metrics["high_risk_systems_latest"])
+    avg_risk_score = round(float(department_summary["avg_risk_score"].mean()), 2)
 
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Latest snapshot", latest_date.strftime("%Y-%m-%d"))
     col2.metric("Average department risk", avg_risk_score)
-    col3.metric("High risk departments", high_risk_departments)
-    col4.metric("High risk systems", high_risk_systems)
+    col3.metric("High-risk departments", high_risk_departments)
+    col4.metric("High-risk systems", high_risk_systems)
 
     benchmark_col, question_col = st.columns([1.1, 1.3])
     with benchmark_col:
         st.subheader("Model Benchmarks")
         benchmark_df = pd.DataFrame(
             [
-                {"Approach": "Predictive ML", **metrics["ml model"]},
-                {"Approach": "Rule based baseline", **metrics["rule based baseline"]},
-                {"Approach": "Anomaly detector", **metrics["anomaly detector"]},
+                {"Approach": "Predictive ML", **metrics["ml_model"]},
+                {"Approach": "Rule-based baseline", **metrics["rule_based_baseline"]},
+                {"Approach": "Anomaly detector", **metrics["anomaly_detector"]},
             ]
         )
         st.dataframe(benchmark_df, use_container_width=True, hide_index=True)
@@ -87,7 +87,7 @@ def main() -> None:
 
     st.subheader("System Snapshot")
     st.dataframe(
-        system_view.sort_values("final risk score", ascending=False),
+        system_view.sort_values("final_risk_score", ascending=False),
         use_container_width=True,
         hide_index=True,
     )
@@ -95,33 +95,33 @@ def main() -> None:
     st.subheader("Risk Trend Over Time")
     if selected_department == "All departments":
         line_df = (
-            trend_view.groupby(["date", "department"], as_index=False)["final risk score"]
+            trend_view.groupby(["date", "department"], as_index=False)["final_risk_score"]
             .mean()
-            .pivot(index="date", columns="department", values="final risk score")
+            .pivot(index="date", columns="department", values="final_risk_score")
             .sort_index()
         )
     else:
         line_df = (
-            trend_view.groupby(["date", "system"], as_index=False)["final risk score"]
+            trend_view.groupby(["date", "system"], as_index=False)["final_risk_score"]
             .mean()
-            .pivot(index="date", columns="system", values="final risk score")
+            .pivot(index="date", columns="system", values="final_risk_score")
             .sort_index()
         )
     st.line_chart(line_df)
 
     st.subheader("Latest Signal Breakdown")
     signal_columns = [
-        "login failures",
-        "suspicious ip accesses",
-        "unusual file downloads",
-        "new device connections",
-        "phishing email signals",
-        "privileged access attempts",
+        "login_failures",
+        "suspicious_ip_accesses",
+        "unusual_file_downloads",
+        "new_device_connections",
+        "phishing_email_signals",
+        "privileged_access_attempts",
     ]
     signal_df = (
         system_view[["system"] + signal_columns]
         .set_index("system")
-        .sort_values("suspicious ip accesses", ascending=False)
+        .sort_values("suspicious_ip_accesses", ascending=False)
     )
     st.bar_chart(signal_df)
 
