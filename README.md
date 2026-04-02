@@ -1,4 +1,4 @@
-# Predictive Cyber Threat Analytics for Higher Education Networks
+# EARLY WARNING FOR CAMPUS CYBER RISKS
 
 This project is a lightweight, scholarship-ready prototype for predicting cybersecurity risk on a university network before an incident happens. It uses synthetic campus telemetry so you can demonstrate a realistic workflow without needing access to private institutional data.
 
@@ -50,10 +50,10 @@ python scripts/generate-logs.py --days 180 --seed 42
 
 What this does:
 
-- creates synthetic network/security events for several university departments
-- assigns events to realistic systems like `finance-erp`, `student-records`, and `research-data-vault`
-- simulates risk spikes such as suspicious IP access surges, phishing waves, and unusual download behavior
-- stores everything as event-level rows in `Data/raw-logs.csv`
+ creates synthetic network/security events for several university departments
+ assigns events to realistic systems like `finance-erp`, `student-records`, and `research-data-vault`
+ simulates risk spikes such as suspicious IP access surges, phishing waves, and unusual download behavior
+ stores everything as event-level rows in `Data/raw-logs.csv`
 
 Why it matters academically:
 
