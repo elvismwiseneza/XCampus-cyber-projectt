@@ -16,7 +16,7 @@ def main() -> None:
     parser.add_argument("--days", type=int, default=180, help="Number of days of synthetic data to generate.")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducible output.")
     args = parser.parse_args()
-
+    
     logs = generate_raw_logs(output_path=PIPELINE_PATHS.raw_logs, days=args.days, seed=args.seed)
     print(f"Generated {len(logs)} raw events at {PIPELINE_PATHS.raw_logs}")
 

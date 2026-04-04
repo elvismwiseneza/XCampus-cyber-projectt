@@ -48,7 +48,7 @@ def main() -> None:
 
     benchmark_col, question_col = st.columns([1.1, 1.3])
     with benchmark_col:
-        st.subheader("Oerformance/results")
+        st.subheader("Performance/results")
         benchmark_df = pd.DataFrame(
             [
                 {"Approach": "Predictive ML", **metrics["ml_model"]},
